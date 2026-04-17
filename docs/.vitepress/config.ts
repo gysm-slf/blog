@@ -106,24 +106,50 @@ const teekConfig = defineTeekConfig({
 });
 
 // https://vitepress.dev/reference/site-config
+// VitePress 特有配置，非 vue3 标准配置 （站点配置，内容相关，声明式）
 export default defineConfig({
-  title: "slf-web",
+  title: "演示",
   description: "A VitePress Site",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '起点', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'vue3', link: '/vue3/introduction/demo' }
     ],
 
-    sidebar: [
-      {
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Demo', link: '/demo' },
-        ]
-      }
-    ],
+    sidebar: {
+      '/': [
+        {text: 'Markdown Examples', link: '/markdown-examples'}
+      ],
+      '/vue3/': [
+        {
+          text: '简介',
+          collapsed: true,
+          items: [
+            {text: '什么是 xx ?', link: '/vue3/introduction/demo'},
+            {text: '什么是 xxx ?', link: '/vue3/introduction/demo2'},
+          ]
+        },
+        {
+          text: '基础',
+          items: [
+            {text: 'base demo', link: '/vue3/base/demo'},
+          ]
+        },
+        {
+          text: '进阶',
+          items: [
+            {text: 'advanced demo', link: '/vue3/advanced/demo'},
+          ]
+        },
+        {
+          text: '深入',
+          items: [
+            {text: 'deep demo', link: '/vue3/deep/demo'},
+          ]
+        }
+      ],
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }

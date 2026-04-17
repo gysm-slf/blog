@@ -2,12 +2,12 @@
 # 顶部为配置设置
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home # 使用首页布局 doc | home | page
-title: test # 页面标题 
+title: 首页 # 页面标题 
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "My Awesome Project" # 项目名称 
+  text: "A VitePress Site"   # 主要文本
+  tagline: My great project tagline # 标语/口号
   actions: # 指向链接
     - theme: brand
       text: Markdown Examples
@@ -23,12 +23,4 @@ features:
     details: 直接在 Markdown 中使用 Vue 组件
 ---
 
-## 可以使用组件
-<!-- 
-<script setup>
-    import Custom from './components/Custom.vue'
-</script>
-
-<Custom />
--->
-
+<rainbow-gradient />

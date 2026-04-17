@@ -1,5 +1,5 @@
 // .vitepress/theme/index.ts
-import { defineComponent, h, provide, computed, watch,  } from "vue";
+import { defineComponent, h, provide, computed  } from "vue";
 import Teek, { useCopyBanner, giscusContext, walineContext } from "vitepress-theme-teek";
 import { useData, useRoute } from 'vitepress';
 import "./style/index.scss";
@@ -8,13 +8,14 @@ import "./style/index.scss";
 // import Giscus from "@giscus/vue"; // https://giscus.app/zh-CN
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
-import confetti from "./components/confetti.vue" // 彩纸
+import confetti from "./components/confetti.vue"
+import ribbon from "./components/ribbon.vue"
+import rainbowGradient from "./components/rainbow-gradient.vue"
 
-// 彩虹背景动画样式
-let homePageStyle: HTMLStyleElement | undefined
-
+// VitePress 特有的配置，非 Vue3 标准配置 （表现层，编程式）
 export default {
     extends: Teek,
+    // 应用级 Setup 钩子，在 VitePress 应用启动时执行一次，用于初始化全局功能、插件或副作用
     setup: () => {
         /**
          * 配置方式，可自定义提示语
@@ -56,35 +57,12 @@ export default {
             return () => h(Teek.Layout, null, {});
         },
     }),
-    enhanceApp({ app , router }) {
-        app.component('confetti', confetti)
-        // 彩虹背景动画样式
-        if (typeof window !== 'undefined') {
-            watch(
-                () => router.route.data.relativePath,
-                () => updateHomePageStyle(location.pathname === '/'),
-                { immediate: true },
-            )
-        }
+    enhanceApp({ app }) {
+        // ❌ 不好的做法：注册了大量只在单个页面用的组件
+        app.component('confetti', confetti) // 散落彩纸
+        app.component('ribbon', ribbon) // 背景彩带
+        app.component('rainbowGradient', rainbowGradient) // 项目名称彩虹渐变
     },
 };
 
-// 彩虹背景动画样式
-function updateHomePageStyle(value: boolean) {
-    if (value) {
-        if (homePageStyle) return
-
-        homePageStyle = document.createElement('style')
-        homePageStyle.innerHTML = `
-    :root {
-      animation: rainbow 12s linear infinite;
-    }`
-        document.body.appendChild(homePageStyle)
-    } else {
-        if (!homePageStyle) return
-
-        homePageStyle.remove()
-        homePageStyle = undefined
-    }
-}
 
