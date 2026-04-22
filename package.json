@@ -23,6 +23,8 @@
     "canvas-confetti": "^1.9.4",
     "sass": "^1.99.0",
     "typescript": "~6.0.2",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-vue-components": "^32.0.0",
     "vite": "^8.0.4",
     "vitepress": "^1.6.4",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",

@@ -110,11 +110,58 @@ const teekConfig = defineTeekConfig({
 export default defineConfig({
   title: "演示",
   description: "A VitePress Site",
+  vite: {
+    server: {
+      port: 8888,
+      open: true, // 启动时自动打开浏览器
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '起点', link: '/' },
-      { text: 'vue3', link: '/vue3/introduction/demo' }
+      { text: '首页', link: '/' },
+      {
+        text: '🦍程序猿专栏',
+        items: [
+          { text: 'vue', link: '/vue3/introduction/demo' },
+          { text: 'java', link: '/' },
+          { text: '🔥dify', link: '/' },
+          { text: 'python', link: '/' },
+          { text: 'nginx', link: '/' },
+          { text: 'linux', link: '/' },
+          { text: '工具资源', link: '/' },
+          { text: '计算机基础', link: '/' },
+          { text: '开发规范', link: '/' },
+        ]
+      },
+      {
+        text: '🌏兴趣专栏',
+        items: [
+          { text: '开发中...', link: '/' }
+        ]
+      },
+      {
+        text: '👣生活',
+        items: [
+          { text: '🍲美食', link: '/休闲娱乐/🍲美食' },
+          { text: '电影', link: '/电影' },
+          { text: '游戏', link: '/游戏' },
+          { text: '音乐', link: '/音乐' },
+          { text: '相册', link: '/相册' },
+        ]
+      },
+      {
+        text: '更新日志',
+        items: [
+          { text: '开发中...', link: '/' }
+        ]
+      },
+      {
+        text: '关于',
+        items: [
+          { text: '关于我', link: '/' }
+        ]
+      },
     ],
 
     sidebar: {
@@ -147,16 +194,79 @@ export default defineConfig({
           items: [
             {text: 'deep demo', link: '/vue3/deep/demo'},
           ]
+        },
+        {
+          text: '经验分享',
+          items: [
+            {text: 'exp demo', link: '/'},
+          ]
         }
-      ],
+      ]
     },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ],
+
+    //Algolia搜索
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: 'PR608RN4AL',
+        apiKey: '93a14dc104afc1c87468d91034f6090f',
+        indexName: 'note',
+        locales: {
+          root: {
+            placeholder: '搜索文档',
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+              },
+              modal: {
+                searchBox: {
+                  resetButtonTitle: '清除查询条件',
+                  resetButtonAriaLabel: '清除查询条件',
+                  cancelButtonText: '取消',
+                  cancelButtonAriaLabel: '取消'
+                },
+                startScreen: {
+                  recentSearchesTitle: '搜索历史',
+                  noRecentSearchesText: '没有搜索历史',
+                  saveRecentSearchButtonTitle: '保存至搜索历史',
+                  removeRecentSearchButtonTitle: '从搜索历史中移除',
+                  favoriteSearchesTitle: '收藏',
+                  removeFavoriteSearchButtonTitle: '从收藏中移除'
+                },
+                errorScreen: {
+                  titleText: '无法获取结果',
+                  helpText: '你可能需要检查你的网络连接'
+                },
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换',
+                  closeText: '关闭',
+                  searchByText: '搜索提供者'
+                },
+                noResultsScreen: {
+                  noResultsText: '无法找到相关结果',
+                  suggestedQueryText: '你可以尝试查询',
+                  reportMissingResultsText: '你认为该查询应该有结果？',
+                  reportMissingResultsLinkText: '点击反馈'
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   markdown: {
     lineNumbers: true, // 行号显示
+    image: {
+      // 开启图片懒加载
+      lazyLoading: true
+    },
   },
   extends: teekConfig
 })
