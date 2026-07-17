@@ -1,0 +1,8 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://chat.aiprox.net",
+    "ANTHROPIC_AUTH_TOKEN": "sk-3620cb6415d22b4c212aeddb3dab443be5d51362b26a42d5a71a12622c3ac086",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
+  }
+}

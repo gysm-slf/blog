@@ -1,0 +1,224 @@
+$h2-number-color: #fcb5e8;
+$h3-number-color: #FF8400;
+$h4-number-color: #2e8bc0;
+$h5-number-color: #ff7aa3;
+$h6-number-color: #ff9f4a;
+
+
+$h2-number-hover-color: #8794ff;
+$h3-number-hover-color: red;
+$h4-number-hover-color: #0c5f8a;
+$h5-number-hover-color: #e8436e;
+$h6-number-hover-color: #f26e2a;
+
+$h2-background-image: linear-gradient(107deg, #ffb685 -30.6%, #ff6f1d -1.11%, #fcb5e8 39.14%, #8794ff 73.35%, #3c70ff 97.07%, #3c70ff 118.97%);
+$h3-background-image: linear-gradient(107deg, yellow -5%, #FF8400 35%, red 70%, #9D4F00 105%);
+$h4-background-image: linear-gradient(107deg, #d4f1f9 0%, #7ac6e2 30%, #2e8bc0 58%, #0c5f8a 80%, #043449 100%);
+$h5-background-image: linear-gradient(107deg, #ffe0f0 0%, #ffb6d0 28%, #ff7aa3 56%, #e8436e 82%, #a12244 100%);
+$h6-background-image: linear-gradient(107deg, #fff3b0 0%, #ffcc66 25%, #ff9f4a 50%, #f26e2a 75%, #b13e0e 100%);
+
+.rainbow-title .vp-doc {
+
+  h2, h3, h4, h5, h6 {
+    position: relative;
+    display: table;
+    margin: 1.5rem 0 0.8rem;
+    padding-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* ↓ <- 下划线 -> ↓ */
+  @mixin underline($background-image: linear-gradient(107deg, #ffb685 -30.6%, #ff6f1d -1.11%, #fcb5e8 39.14%, #8794ff 73.35%, #3c70ff 97.07%, #3c70ff 118.97%)) {
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background-image: $background-image;
+      background-size: 200% 100%;
+      background-position: 0% 0%;
+      transition: width 0.3s ease, background-position 0.55s ease-in-out;
+    }
+
+    &:hover {
+      &::after {
+        background-position: 100% 0%;
+        width: 103%;
+      }
+    }
+  }
+  h2 {
+    @include underline($h2-background-image);
+  }
+  h3 {
+    @include underline($h3-background-image);
+  }
+  h4 {
+    @include underline($h4-background-image);
+  }
+  h5 {
+    @include underline($h5-background-image);
+  }
+  h6 {
+    @include underline($h6-background-image);
+  }
+  /* ↑ <- 下划线 -> ↑ */
+
+  /* ↓ <- 渐变 -> ↓ */
+  @mixin gradient-flow ($background-image: $h2-background-image) {
+    background-image: $background-image;
+    //background-size: 200% 100%;
+    //background-position: 0% 0%;
+    //transition: background-position 0.5s ease-in-out, padding-left 0.3s ease, letter-spacing 0.2s ease;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    &:hover {
+      //background-position: 100% 0%;
+      padding-left: 0.5rem;
+      letter-spacing: 0.2px;
+    }
+  }
+  h2 {
+    font-size: 1.75rem;
+    @include gradient-flow($h2-background-image);
+  }
+  h3 {
+    font-size: 1.45rem;
+    @include gradient-flow($h3-background-image);
+  }
+  h4 {
+    font-size: 1.25rem;
+    @include gradient-flow($h4-background-image);
+  }
+  h5 {
+    font-size: 1.1rem;
+    @include gradient-flow($h5-background-image);
+  }
+  h6 {
+    font-size: 1rem;
+    @include gradient-flow($h6-background-image);
+  }
+  /* ↑ <- 渐变 -> ↑ */
+
+  /* 因为渐变效果会影响 emoji 所以此处恢复 Emoji 原本的颜色 */
+  .emoji {
+    background: none;
+    color: initial;
+  }
+  h2 {
+    border-top: unset;
+  }
+}
+
+.vp-doc {
+  /* ↓ <- 序号 -> ↓ */
+  counter-reset: h2-counter;
+  h2 {
+    counter-increment: h2-counter;
+    counter-reset: h3-counter;
+
+    &::before {
+      content: counter(h2-counter) ". ";
+      color: $h2-number-color;
+      font-weight: 700;
+      margin-right: 0.4rem;
+      transition: margin-right 0.3s;
+    }
+    &:hover {
+      &::before {
+        color: $h2-number-hover-color;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+  h3 {
+    counter-increment: h3-counter;
+    counter-reset: h4-counter;
+
+    &::before {
+      content: counter(h2-counter) "." counter(h3-counter) " ";
+      color: $h3-number-color;
+      font-weight: 650;
+      margin-right: 0.35rem;
+      transition: margin-right 0.3s;
+    }
+    &:hover {
+      &::before {
+        color: $h3-number-hover-color;
+        margin-right: 0.7rem;
+      }
+    }
+  }
+  h4 {
+    counter-increment: h4-counter;
+    counter-reset: h5-counter;
+
+    &::before {
+      content: counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) " ";
+      color: $h4-number-color;
+      font-weight: 600;
+      margin-right: 0.3rem;
+      transition: margin-right 0.3s;
+    }
+    &:hover {
+      &::before {
+        color: $h4-number-hover-color;
+        margin-right: 0.6rem;
+      }
+    }
+  }
+  h5 {
+    counter-increment: h5-counter;
+    counter-reset: h6-counter;
+
+    &::before {
+      content: counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) " ";
+      color: $h5-number-color;
+      font-weight: 550;
+      margin-right: 0.25rem;
+      transition: margin-right 0.3s;
+    }
+    &:hover {
+      &::before {
+        color: $h5-number-hover-color;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  h6 {
+    counter-increment: h6-counter;
+
+    &::before {
+      content: counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "." counter(h6-counter) " ";
+      color: $h6-number-color;
+      font-weight: 500;
+      margin-right: 0.2rem;
+      transition: margin-right 0.3s;
+    }
+    &:hover {
+      &::before {
+        color: $h6-number-hover-color;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+  /* ↑ <- 序号 -> ↑ */
+}
+
+/* 隐藏自动生成的序号 */
+.no-title-number {
+  .vp-doc {
+    h2, h3, h4, h5, h6 {
+      &::before {
+        content: none !important;
+      }
+    }
+
+    /* 如果需要，也可以调整计数器重置 */
+    counter-reset: none !important;
+  }
+}

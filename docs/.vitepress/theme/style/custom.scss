@@ -1,0 +1,89 @@
+@use "./sub-title" as *; // 次级标题美化样式
+
+/* 删除线样式增强 */
+s {
+  color: gray;
+  opacity: 0.6;
+}
+
+/* banner 波浪线透明 */
+.tk-banner-waves .parallax .use {
+  opacity: 0.2;
+}
+
+/* banner title 发光字体 */
+.custom-home-title {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(147, 51, 234, .6), 0 0 60px rgba(6, 182, 212, .4), 0 4px 20px rgba(0, 0, 0, .5);
+  filter: brightness(1.1);
+}
+
+/* banner title 彩虹渐变 */
+/*.custom-home-title {
+  color: transparent;
+  background: -webkit-linear-gradient(120deg, var(--rainbow-prev) 30%, var(--rainbow-next));
+  background-clip: text;
+  -webkit-background-clip: text;
+}*/
+
+/* 引用效果美化 */
+:root blockquote {
+  margin: 1.2em 0;
+  padding: 0.2em 1.2em;
+  border-left: 4px solid #3b82f6;
+  background: #f8fafc;
+  border-radius: 0 12px 12px 0;
+  color: #334155;
+  font-style: normal;
+  transition: all 0.2s ease;
+
+  // 鼠标悬停加深效果
+  &:hover {
+    background: #f1f5f9;
+    border-left-color: #2563eb;
+  }
+
+  // 引用内的段落边距调整
+  p {
+    margin: 0.4em 0;
+  }
+
+  // 引用内的多级引用嵌套
+  blockquote {
+    border-left-color: #8b5cf6;
+    background: #fefce8;
+  }
+
+  // 引用内的列表样式
+  ul,
+  ol {
+    margin: 0.4em 0;
+    padding-left: 1.5em;
+  }
+
+  // 引用中的链接颜色
+  a {
+    color: #3b82f6;
+    text-decoration: none;
+    border-bottom: 1px dashed #cbd5e1;
+
+    &:hover {
+      color: #1d4ed8;
+      border-bottom-color: #3b82f6;
+    }
+  }
+}
+
+.mermaid-custom-class {
+  display: flex;
+  justify-content: center;
+}
+
+summary {
+  cursor: pointer;
+}

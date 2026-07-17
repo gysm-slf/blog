@@ -12,7 +12,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Confetti: typeof import('./docs/.vitepress/theme/components/confetti.vue')['default']
-    FoodRecommend: typeof import('./docs/.vitepress/theme/components/food-recommend.vue')['default']
+    CustomBanner: typeof import('./docs/.vitepress/theme/components/custom-banner.vue')['default']
     RainbowGradient: typeof import('./docs/.vitepress/theme/components/rainbow-gradient.vue')['default']
     Ribbon: typeof import('./docs/.vitepress/theme/components/ribbon.vue')['default']
   }

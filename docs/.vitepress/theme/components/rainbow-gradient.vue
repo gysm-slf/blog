@@ -20,3 +20,5 @@ function updateHomePageStyle(value: boolean) {
 }
 updateHomePageStyle(true)
 </script>
+
+<template></template>

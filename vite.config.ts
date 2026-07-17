@@ -4,6 +4,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vite.dev/config/
+// 注意：vitePress 有自己的 vite 实例，不会读取此处的配置文件
 export default defineConfig({
     // vite 配置方式（VitePress配置方式不同，可自行了解）
     // server: {
@@ -38,5 +39,5 @@ export default defineConfig({
             imports: ['vue', 'vue-router'], // 自动导入的库
             dts: true, // 生成类型声明文件
         }),
-    ],
+    ]
 })

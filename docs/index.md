@@ -6,15 +6,15 @@ title: 首页 # 页面标题
 
 hero:
   name: "My Awesome Project" # 项目名称 
-  text: "A VitePress Site"   # 主要文本
-  tagline: My great project tagline # 标语/口号
+  text: "好记性不如烂笔头"   # 主要文本
+  tagline: 吃得苦中苦，变成二百五。 # 标语/口号
   actions: # 指向链接
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Markdown 语法示例
+      link: /🐵程序猿专栏/📖使用手册/markdown-examples
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Frontmatter 配置示例
+      link: /🐵程序猿专栏/📖使用手册/frontmatter-examples
 
 features:
   - title: 即时启动

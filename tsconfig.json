@@ -1,7 +1,19 @@
 {
+  "include": [ // 告诉 TypeScript 编译器哪些文件需要被类型检查
+    "docs/**/*.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.d.ts",
+  ],
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": { // 告诉编译器 @components 目录是存在的不要报错
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["docs/.vitepress/theme/components/*"],
+      "@styles/*": ["docs/.vitepress/theme/styles/*"]
+    }
+  }
 }
